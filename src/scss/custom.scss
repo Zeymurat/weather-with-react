@@ -1,2 +1,279 @@
+:root {
+    --dark: #34495E;
+    --light: #eaeaeab4;
+    --success: #0abf30;
+    --error: #e24D4C;
+    --info: #3498DB;
+    --warning: #E9BD0C;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #222;
+    background-image: url('https://source.unsplash.com/1920x1080/?weather');
+}
+
+.card {
+    display: grid;
+    justify-content: center;
+    background: #eaeaea73;
+    padding: 2em;
+    border-radius: 40px;
+    width: 100%;
+    // max-width: 25%;
+    margin: 1em;
+}
+.city {
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+
+.temp {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+}
+
+.humidityvalue {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+}
+
+.windvalue {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+}
+
+.humidity {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+}
+
+.description {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-left: 10px;
+}
+
+.wind {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: #000000c2;
+    color: #fff;
+    margin: 0.5em;
+    border-radius: 50px;
+    border: none;
+    height: 2em;
+    width: 2em;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-size: 100%;
+}
+
+button:hover {
+    background: #363636c2;
+}
+
+input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    background: #000000c2;
+    color: #fff;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+input.search-bar:focus {
+    background: #363636c2;
+}
+
+.weather.loading {
+    visibility: hidden;
+    max-height: 25px;
+    position: relative;
+}
+
+.weather.loading::after {
+    visibility: visible;
+    content: "Loading...";
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+}
+
+.card_weather {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.currenttime {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    margin: 0;
+}
+
+.notifications {
+    font-size: 11px;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    list-style: none;
+    padding: 0px;
+}
+
+.notifications :where(.toast, .column) {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .toast {
+    background: var(--light);
+    width: 430px;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    border-radius: 20px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    animation: show_toast 0.4s ease forwards;
+}
+
+@keyframes show_toast {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-10%);
+    }
+
+    80% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(-5px);
+    }
+}
+
+.notifications .toast.passive {
+    animation: hide_toast 0.4s ease forwards;
+}
+
+@keyframes hide_toast {
+    0% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5%);
+    }
+
+    80% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(calc(100% + 20px));
+    }
+}
+
+.toast::before {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        width: 0%;
+    }
+
+}
+
+.toast.success::before {
+    background: var(--success);
+}
+
+.toast.success .column i {
+    color: var(--success);
+}
+
+.toast.error::before {
+    background: var(--error);
+}
+
+.toast.error .column i {
+    color: var(--error);
+}
+
+.toast.warning::before {
+    background: var(--warning);
+}
+
+.toast.warning .column i {
+    color: var(--warning);
+}
+
+.toast.inform::before {
+    background: var(--info);
+}
+
+.toast.inform .column i {
+    color: var(--info);
+}
+
+.toast .column i {
+    font-size: 1.1rem;
+}
+
+.toast .column span {
+    font-family: 'Lumanosimo', cursive;
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.toast i:last-child {
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.toast i:last-child:hover {
+    color: var(--dark);
+}
+@media screen and (max-width: 530px) {
+    .notifications {
+        width: 90%;
+    }    
+    .notifications .toast {
+        width: 90%;
+        font-size: 0.6rem;
+        margin-left: 20px;
+    }    
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.scss';
