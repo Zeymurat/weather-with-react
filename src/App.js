@@ -12,7 +12,6 @@ function App() {
         .then(response => response.json())
         .then(data => setWeatherInfo(data))
     }
-    console.log(weatherInfo);
   }
   const displayAlert = (msg, type) => {
     setError({ msg: msg, type: type });

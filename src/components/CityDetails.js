@@ -2,7 +2,6 @@ import React from "react";
 
 function CityDetails(props){
         const { cod } = props.weatherInfo;
-        console.log(typeof(cod));
         if (cod === 200) {
             const { name, dt } = props.weatherInfo;
             const { icon, description } = props.weatherInfo.weather[0];

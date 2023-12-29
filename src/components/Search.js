@@ -1,23 +1,25 @@
 import { useState } from "react";
 
-function Search(displayAlert, searchCity) {
+function Search({ displayAlert, searchCity }) {
     const [keyword, setKeyword] = useState('');
-    const chanceinput = (e) => {
-        setKeyword(e.target.value);
+  
+    const changeInput = (e) => {
+      setKeyword(e.target.value);
     }
-    const searchsubmit = (e) => {
-        e.preventDefault();
-        if (keyword === '') {
-            displayAlert('Please Input Any City', 'warning');
-        } else {
-            searchCity(keyword);
-            setKeyword('');
-        }
+  
+    const searchSubmit = (e) => {
+      e.preventDefault();
+      if (keyword === '') {
+        displayAlert('Please Input Any City', 'warning');
+      } else {
+        searchCity(keyword);
+        setKeyword('');
+      }
     }
     return (
         <div className="search">
-            <form onSubmit={searchsubmit}>
-                <input type="text" value={keyword} className="search-bar" onChange={chanceinput} placeholder="Search City" />
+            <form onSubmit={searchSubmit}>
+                <input type="text" value={keyword} className="search-bar" onChange={changeInput} placeholder="Search City" />
                 <button style={{ marginLeft: '4px', borderRadius: '30px' }} type="submit"><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" height="1em"
                     width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path
