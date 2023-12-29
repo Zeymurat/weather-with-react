@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Search from './components/Search';
 import CityDetails from './components/CityDetails';
 import Alert from './components/Alert';
@@ -6,6 +6,18 @@ import Alert from './components/Alert';
 function App() {
   const [weatherInfo, setWeatherInfo] = useState("");
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    
+    const initialCity = "İstanbul";
+    searchCity(initialCity);
+
+
+    return () => {
+      
+    };
+  }, []);
+
   const searchCity = (keyword) => {
     if (keyword.length > 0) {
       fetch("https://api.openweathermap.org/data/2.5/weather?q=" + keyword + "&units=metric&appid=e763c3a4c7d7983d557f48eaf57baba8")
