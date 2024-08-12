@@ -13,8 +13,11 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: #222;
-    background-image: url('https://source.unsplash.com/1920x1080/?weather');
+    background: #131313;
+    background-image: url('../noaa-0ETSZYPjvDo-unsplash.jpg');
+    background-size: cover; /* Görseli alanı kaplayacak şekilde ölçeklendirir */
+  background-position: center; /* Görseli ortalar */
+  background-repeat: no-repeat; /* Görselin tekrar etmesini engeller */
 }
 
 .card {
